@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Sunny.UI;
-using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
+using TGASharpLib;
 
 namespace GifToWOW
 {
-    public partial class App : UIForm, GifConverter.IGifConverterListener
+    public partial class App : Form, GifConverter.IGifConverterListener
     {
         private string gifPath;
         private string optDirPath;
@@ -33,7 +28,7 @@ namespace GifToWOW
         private void SelectGifButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog gifSelectDialog = new OpenFileDialog();
-            gifSelectDialog.Filter = "Gif文件|*.gif";
+            gifSelectDialog.Filter = "Gif|*.gif";
             gifSelectDialog.Title = "选择Gif文件";
             gifSelectDialog.InitialDirectory = gifPath == null ? desktopPath : Path.GetDirectoryName(gifPath);
             if (gifSelectDialog.ShowDialog() == DialogResult.OK)
@@ -45,25 +40,38 @@ namespace GifToWOW
 
         private void SelectOptDirButton_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialogEx optDirDialog = new FolderBrowserDialogEx();
+            FolderBrowserDialog optDirDialog = new FolderBrowserDialog();
             optDirDialog.Description = "选择输出文件夹";
-            optDirDialog.DirectoryPath = optDirPath == null ? desktopPath : optDirPath;
+            optDirDialog.SelectedPath = optDirPath == null ? desktopPath : optDirPath;
             DialogResult dialogResult = optDirDialog.ShowDialog(this);
             if (dialogResult == DialogResult.OK) 
             {
-                optDirPath = optDirDialog.DirectoryPath;
+                optDirPath = optDirDialog.SelectedPath;
                 OptDirPathLabel.Text = optDirPath;
             }
-        }
-
-        private void GifFrames_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void App_SizeChanged(object sender, EventArgs e)
         {
             GifFrames.Height = (int)(this.Height * 0.65);
+            GifFrames.PerformLayout();
+            GifInfo.Location = new Point(4, GifFrames.Location.Y + GifFrames.Height + 10);
+        }
+
+        private void ScaleTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            ScaleTrackBarLabel.Text = "缩放比例：" + ScaleTrackBar.Value + "%";
+        }
+
+
+        private void ColumnTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            ColumnTrackBarLabel.Text = "列数（0：自动）：" + ColumnTrackBar.Value;
+        }
+
+        private void ConvertButton_Click(object sender, EventArgs e)
+        {
+            gifConverter.StartOutput(optDirPath == null ? desktopPath : optDirPath, ScaleTrackBar.Value, ColumnTrackBar.Value, PlaceAvgCheckBox.Checked);
         }
 
         private void OnGifSelected()
@@ -72,27 +80,14 @@ namespace GifToWOW
             gifConverter.SetGifPath(gifPath);
         }
 
-        private void DisablePictureBoxAnimate(PictureBox pictureBox)
-        {
-            var animateMethod = typeof(PictureBox).GetMethod("Animate",
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance,
-            null, new Type[] { typeof(bool) }, null);
-            animateMethod.Invoke(pictureBox, new object[] { false });
-        }
-
-        public void OnProcessStart()
-        {
-            
-        }
-
-        public void OnProcessEnd()
+        private void ShowGifFrames()
         {
             var frames = gifConverter.GetFrames();
             var count = frames.Count;
             for (int i = 0; i < count; i++)
             {
                 PictureBox picture = null;
-                if (i < pictureBoxes.Count) 
+                if (i < pictureBoxes.Count)
                 {
                     picture = pictureBoxes[i];
                 }
@@ -108,34 +103,59 @@ namespace GifToWOW
                 picture.Image = new Bitmap(frames[i]);
 
                 GifFrames.Controls.Add(picture);
-
             }
-            Console.WriteLine(gifConverter.GetDuration());
+        }
+
+        private void ShowGifInfos()
+        {
+            string info = "帧数量：" + gifConverter.GetFrames().Count + "\n"
+                + "宽高：" + gifConverter.GetImageWidth() + "x" + gifConverter.GetImageHeight() + "\n"
+                + "时长：" + gifConverter.GetDuration()/1000f + "秒";
+            GifInfo.Text = info;
+        }
+
+        private void ShowInfo(string info) 
+        {
+            Status.Text = info;
+            Status.ForeColor = Color.FromName("#666666");
+        }
+
+        private void ShowError(string error)
+        {
+            Status.Text = error;
+            Status.ForeColor = Color.Red;
+        }
+
+        public void OnProcessStart()
+        {
+            ShowInfo("正在处理");
+        }
+
+        public void OnProcessEnd()
+        {
+            ShowGifFrames();
+            ShowGifInfos();
+            ShowInfo("处理完成");
         }
 
         public void OnConvertStart()
         {
-            throw new NotImplementedException();
+            ShowInfo("开始转换");
         }
 
         public void OnConvertEnd()
         {
-            throw new NotImplementedException();
-        }
-
-        public void OnConvertError()
-        {
-            throw new NotImplementedException();
+            ShowInfo("转换完成");
         }
 
         public void OnProcessError(Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            ShowError(ex.Message);
         }
 
         public void OnConvertError(Exception ex)
         {
-            
+            ShowError(ex.Message);
         }
     }
 
@@ -146,6 +166,7 @@ namespace GifToWOW
         private string gifPath;
         private Image gifImage;
         private List<Image> gifFrames = new List<Image>();
+        private int duration;
 
         public GifConverter(IGifConverterListener listener)
         {
@@ -188,8 +209,17 @@ namespace GifToWOW
             listener.OnProcessStart();
             try
             {
-                gifImage = null;
+                duration = 0;
+                for (int i = 0; i < gifFrames.Count; i++)
+                {
+                    gifFrames[i].Dispose();
+                }
                 gifFrames.Clear();
+                if (gifImage != null)
+                { 
+                    gifImage.Dispose();
+                    gifImage = null;
+                }
                 if (gifPath == null || !File.Exists(gifPath))
                 { 
                     listener.OnProcessError(new Exception("Gif不存在"));
@@ -200,7 +230,19 @@ namespace GifToWOW
                 int frameCount = gifImage.GetFrameCount(FrameDimension.Time);
                 for (int i = 0; i < frameCount; i++) {
                     gifImage.SelectActiveFrame(FrameDimension.Time, i);
-                    gifFrames.Add(gifImage.Clone() as Image);
+                    Image image = gifImage.Clone() as Image;
+                    gifFrames.Add(image);
+
+                    PropertyItem item = image.GetPropertyItem(0x5100);
+                    if (item != null)
+                    {
+                        byte[] time = new byte[4];
+                        time[0] = item.Value[i * 4];
+                        time[1] = item.Value[i * 4 + 1];
+                        time[2] = item.Value[i * 4 + 2];
+                        time[3] = item.Value[i * 4 + 3];
+                        duration += BitConverter.ToInt32(time, 0) * 10;
+                    }
                 }
 
                 listener.OnProcessEnd();
@@ -211,6 +253,123 @@ namespace GifToWOW
             }
         }
 
+        public void StartOutput(string desDir, int scale, int cols, Boolean placeAvg)
+        {
+            if (gifPath == null || !File.Exists(gifPath))
+            {
+                listener.OnConvertError(new Exception("请选择Gif"));
+                return;
+            }
+
+            if (gifFrames.Count <= 0)
+            {
+                listener.OnConvertError(new Exception("请选择帧数>0的Gif"));
+                return;
+            }
+
+            if (desDir == null || !Directory.Exists(desDir))
+            {
+                listener.OnConvertError(new Exception("目标文件夹不存在"));
+                return;
+            }
+            try
+            {
+                listener.OnConvertStart();
+                List<Bitmap> bitmaps = new List<Bitmap>();
+                int scaleWidth = (int)(scale / 100f * gifImage.Width);
+                int scaleHeight = (int)(scale /100f * gifImage.Height);
+                for (int i = 0; i < gifFrames.Count; i++) 
+                {
+                    bitmaps.Add(ResizeImage(gifFrames[i], scaleWidth, scaleHeight));
+                }
+
+                OutputImageInfo optImgInfo = CalcMostSuitableImageInfo(bitmaps, scaleWidth, scaleHeight, cols);
+                Bitmap result = new Bitmap(optImgInfo.width, optImgInfo.height);
+                using (Graphics g = Graphics.FromImage(result)) 
+                {
+                    for (int i = 0; i < optImgInfo.row; i++)
+                    {
+                        for (int j = i * optImgInfo.col; j < i * optImgInfo.col + optImgInfo.col; j++)
+                        {
+                            if (j < bitmaps.Count)
+                            {
+                                var bitmap = bitmaps[j];
+                                int left, top;
+                                if (placeAvg)
+                                {
+                                    left = (j % optImgInfo.col) * optImgInfo.cellWidth + (optImgInfo.cellWidth - optImgInfo.frameWidth) / 2;
+                                    top = i * optImgInfo.cellHeight + (optImgInfo.cellHeight - optImgInfo.frameHeight) / 2;
+                                }
+                                else
+                                {
+                                    left = j % optImgInfo.col * optImgInfo.frameWidth;
+                                    top = i * optImgInfo.frameHeight;
+                                }
+                                g.DrawImage(bitmap, new Point(left, top));
+                            }
+                        }
+                    }
+                }
+
+                string fileName = Path.GetFileName(gifPath).Replace(".gif", "");
+                //string pngFileName = fileName + ".png";
+                //result.Save(desDir + "/" + pngFileName, ImageFormat.Png);
+
+                //var pngFile = new TGA(desDir + "/" + pngFileName);
+                //pngFile.Save(desDir + "/" + fileName + ".tga");
+                ((TGA)result).Save(desDir + "/" + fileName + ".tga");
+
+                listener.OnConvertEnd();
+            }
+            catch (Exception ex)
+            {
+                listener.OnConvertError(ex);
+            }
+
+        }
+
+        private OutputImageInfo CalcMostSuitableImageInfo(List<Bitmap> bitmaps, int width, int height, int cols)
+        {
+            OutputImageInfo optImgInfo = new OutputImageInfo
+            {
+                frameWidth = width,
+                frameHeight = height
+            };
+
+            if (cols > 0)
+            {
+                FillOptImgInfo(bitmaps, width, height, cols, optImgInfo);
+            }
+            else
+            {
+                cols = Math.Min(bitmaps.Count, (int)Math.Ceiling(bitmaps.Count / 2d));
+                for (int i = cols; i > 0; i--)
+                {
+                    FillOptImgInfo(bitmaps, width, height, i, optImgInfo);
+                }
+            }
+            return optImgInfo;
+        }
+
+        private void FillOptImgInfo(List<Bitmap> bitmaps, int width, int height, int cols, OutputImageInfo optImgInfo)
+        {
+            int row = (int)Math.Ceiling(bitmaps.Count / (double)cols);
+            int realWidth = width * cols;
+            int realHeight = height * row;
+            double neededWidth = Math.Pow(2, Math.Ceiling(Math.Log(realWidth) / Math.Log(2)));
+            double neededHeight = Math.Pow(2, Math.Ceiling(Math.Log(realHeight) / Math.Log(2)));
+            double neededPixels = neededWidth * neededHeight;
+            if (optImgInfo.getPixels() <= 0 || neededPixels < optImgInfo.getPixels())
+            {
+                optImgInfo.col = cols;
+                optImgInfo.row = row;
+                optImgInfo.width = (int)neededWidth;
+                optImgInfo.height = (int)neededHeight;
+                optImgInfo.cellWidth = (int)(neededWidth / cols);
+                optImgInfo.cellHeight = (int)(neededHeight / Math.Floor(neededHeight / height));
+            }
+        }
+
         public List<Image> GetFrames()
         { 
             return gifFrames;
@@ -218,9 +377,17 @@ namespace GifToWOW
 
         public int GetDuration()
         {
-            PropertyItem item = gifImage.GetPropertyItem(0x5100); // FrameDelay in libgdiplus
-                                                             // Time is in milliseconds
-            return (item.Value[0] + item.Value[1] * 256) * 10;
+            return duration;
+        }
+
+        public int GetImageWidth()
+        {
+            return gifImage.Width;
+        }
+
+        public int GetImageHeight()
+        {
+            return gifImage.Height;
         }
 
         public interface IGifConverterListener 
@@ -237,5 +404,23 @@ namespace GifToWOW
 
             void OnConvertError(Exception ex);
         }
+    }
+
+    public class OutputImageInfo
+    {
+        public int width;
+        public int height;
+        public int col;
+        public int row;
+        public int cellWidth;
+        public int cellHeight;
+        public int frameWidth;
+        public int frameHeight;
+
+        public int getPixels()
+        {
+            return width * height;
+        }
+
     }
 }
