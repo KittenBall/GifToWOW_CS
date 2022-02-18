@@ -117,7 +117,405 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GifFrames.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GifFrames.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GifFrames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 1</value>
+  </data>
+  <data name="GifFrames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>794, 353</value>
+  </data>
+  <data name="GifFrames.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GifFrames.Name" xml:space="preserve">
+    <value>GifFrames</value>
+  </data>
+  <data name="&gt;&gt;GifFrames.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GifFrames.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GifFrames.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="GifInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="GifInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GifInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 367</value>
+  </data>
+  <data name="GifInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="GifInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;GifInfo.Name" xml:space="preserve">
+    <value>GifInfo</value>
+  </data>
+  <data name="&gt;&gt;GifInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GifInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GifInfo.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Status.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="Status.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 476</value>
+  </data>
+  <data name="Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="Status.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Status.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;Status.Name" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="&gt;&gt;Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Status.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Status.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="SelectGifButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="SelectGifButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>713, 465</value>
+  </data>
+  <data name="SelectGifButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="SelectGifButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SelectGifButton.Text" xml:space="preserve">
+    <value>Select gif</value>
+  </data>
+  <data name="&gt;&gt;SelectGifButton.Name" xml:space="preserve">
+    <value>SelectGifButton</value>
+  </data>
+  <data name="&gt;&gt;SelectGifButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectGifButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectGifButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="SelectOptDirButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="SelectOptDirButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>541, 465</value>
+  </data>
+  <data name="SelectOptDirButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 23</value>
+  </data>
+  <data name="SelectOptDirButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="SelectOptDirButton.Text" xml:space="preserve">
+    <value>Select output directory</value>
+  </data>
+  <data name="&gt;&gt;SelectOptDirButton.Name" xml:space="preserve">
+    <value>SelectOptDirButton</value>
+  </data>
+  <data name="&gt;&gt;SelectOptDirButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectOptDirButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectOptDirButton.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="OptDirPathLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="OptDirPathLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 470</value>
+  </data>
+  <data name="OptDirPathLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 12</value>
+  </data>
+  <data name="OptDirPathLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="OptDirPathLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;OptDirPathLabel.Name" xml:space="preserve">
+    <value>OptDirPathLabel</value>
+  </data>
+  <data name="&gt;&gt;OptDirPathLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OptDirPathLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OptDirPathLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="ScaleTrackBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ScaleTrackBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ScaleTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>648, 434</value>
+  </data>
+  <data name="ScaleTrackBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 25</value>
+  </data>
+  <data name="ScaleTrackBar.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBar.Name" xml:space="preserve">
+    <value>ScaleTrackBar</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBar.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ScaleTrackBarLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ScaleTrackBarLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ScaleTrackBarLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>657, 419</value>
+  </data>
+  <data name="ScaleTrackBarLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="ScaleTrackBarLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="ScaleTrackBarLabel.Text" xml:space="preserve">
+    <value>Zoom:60%</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBarLabel.Name" xml:space="preserve">
+    <value>ScaleTrackBarLabel</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBarLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBarLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ScaleTrackBarLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ColumnTrackBarLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ColumnTrackBarLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ColumnTrackBarLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 419</value>
+  </data>
+  <data name="ColumnTrackBarLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 12</value>
+  </data>
+  <data name="ColumnTrackBarLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="ColumnTrackBarLabel.Text" xml:space="preserve">
+    <value>Column(0:Auto):0</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBarLabel.Name" xml:space="preserve">
+    <value>ColumnTrackBarLabel</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBarLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBarLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBarLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ColumnTrackBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ColumnTrackBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ColumnTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>502, 434</value>
+  </data>
+  <data name="ColumnTrackBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 25</value>
+  </data>
+  <data name="ColumnTrackBar.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBar.Name" xml:space="preserve">
+    <value>ColumnTrackBar</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrackBar.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="PlaceAvgCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="PlaceAvgCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PlaceAvgCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>376, 434</value>
+  </data>
+  <data name="PlaceAvgCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 16</value>
+  </data>
+  <data name="PlaceAvgCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="PlaceAvgCheckBox.Text" xml:space="preserve">
+    <value>Column evenly</value>
+  </data>
+  <data name="&gt;&gt;PlaceAvgCheckBox.Name" xml:space="preserve">
+    <value>PlaceAvgCheckBox</value>
+  </data>
+  <data name="&gt;&gt;PlaceAvgCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PlaceAvgCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlaceAvgCheckBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ConvertButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ConvertButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>712, 379</value>
+  </data>
+  <data name="ConvertButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="ConvertButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="ConvertButton.Text" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="&gt;&gt;ConvertButton.Name" xml:space="preserve">
+    <value>ConvertButton</value>
+  </data>
+  <data name="&gt;&gt;ConvertButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ConvertButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ConvertButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="JpgFormatCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="JpgFormatCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="JpgFormatCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>274, 434</value>
+  </data>
+  <data name="JpgFormatCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 16</value>
+  </data>
+  <data name="JpgFormatCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="JpgFormatCheckBox.Text" xml:space="preserve">
+    <value>jpg format</value>
+  </data>
+  <data name="&gt;&gt;JpgFormatCheckBox.Name" xml:space="preserve">
+    <value>JpgFormatCheckBox</value>
+  </data>
+  <data name="&gt;&gt;JpgFormatCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;JpgFormatCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;JpgFormatCheckBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="OptInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OptInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 390</value>
+  </data>
+  <data name="OptInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="OptInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;OptInfo.Name" xml:space="preserve">
+    <value>OptInfo</value>
+  </data>
+  <data name="&gt;&gt;OptInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OptInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OptInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 500</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAA
@@ -193,5 +591,17 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>GifToWOW</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

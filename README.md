@@ -1,10 +1,11 @@
-A simple winform project, Allows you to merge all frames within a gif into one image.
+A simple winform project, Allows you to merge all frames within a gif into one image which is tga format so you can use it in wow to show a animated image.
 
 ### Support
 - Custom column count
 - Custom zoom
 
 ### Preview
+*English supported*
 - Original gif:
 
 ![Original gif](preview/test.gif)

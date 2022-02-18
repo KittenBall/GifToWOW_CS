@@ -41,145 +41,107 @@
             this.ColumnTrackBar = new System.Windows.Forms.TrackBar();
             this.PlaceAvgCheckBox = new System.Windows.Forms.CheckBox();
             this.ConvertButton = new System.Windows.Forms.Button();
+            this.JpgFormatCheckBox = new System.Windows.Forms.CheckBox();
+            this.OptInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ScaleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColumnTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // GifFrames
             // 
-            this.GifFrames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GifFrames.AutoScroll = true;
-            this.GifFrames.Location = new System.Drawing.Point(5, 1);
+            resources.ApplyResources(this.GifFrames, "GifFrames");
             this.GifFrames.Name = "GifFrames";
-            this.GifFrames.Size = new System.Drawing.Size(794, 353);
-            this.GifFrames.TabIndex = 3;
             // 
             // GifInfo
             // 
-            this.GifInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.GifInfo.AutoSize = true;
-            this.GifInfo.Location = new System.Drawing.Point(3, 367);
+            resources.ApplyResources(this.GifInfo, "GifInfo");
             this.GifInfo.Name = "GifInfo";
-            this.GifInfo.Size = new System.Drawing.Size(0, 12);
-            this.GifInfo.TabIndex = 4;
             // 
             // Status
             // 
-            this.Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Status.AutoSize = true;
-            this.Status.Location = new System.Drawing.Point(12, 476);
+            resources.ApplyResources(this.Status, "Status");
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(0, 12);
-            this.Status.TabIndex = 5;
-            this.Status.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // SelectGifButton
             // 
-            this.SelectGifButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectGifButton.Location = new System.Drawing.Point(713, 465);
+            resources.ApplyResources(this.SelectGifButton, "SelectGifButton");
             this.SelectGifButton.Name = "SelectGifButton";
-            this.SelectGifButton.Size = new System.Drawing.Size(75, 23);
-            this.SelectGifButton.TabIndex = 6;
-            this.SelectGifButton.Text = "选择Gif";
             this.SelectGifButton.UseVisualStyleBackColor = true;
             this.SelectGifButton.Click += new System.EventHandler(this.SelectGifButton_Click);
             // 
             // SelectOptDirButton
             // 
-            this.SelectOptDirButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectOptDirButton.Location = new System.Drawing.Point(541, 465);
+            resources.ApplyResources(this.SelectOptDirButton, "SelectOptDirButton");
             this.SelectOptDirButton.Name = "SelectOptDirButton";
-            this.SelectOptDirButton.Size = new System.Drawing.Size(166, 23);
-            this.SelectOptDirButton.TabIndex = 7;
-            this.SelectOptDirButton.Text = "选择输出文件夹";
             this.SelectOptDirButton.UseVisualStyleBackColor = true;
             this.SelectOptDirButton.Click += new System.EventHandler(this.SelectOptDirButton_Click);
             // 
             // OptDirPathLabel
             // 
-            this.OptDirPathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.OptDirPathLabel, "OptDirPathLabel");
             this.OptDirPathLabel.AutoEllipsis = true;
-            this.OptDirPathLabel.Location = new System.Drawing.Point(35, 470);
             this.OptDirPathLabel.Name = "OptDirPathLabel";
-            this.OptDirPathLabel.Size = new System.Drawing.Size(500, 12);
-            this.OptDirPathLabel.TabIndex = 8;
-            this.OptDirPathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ScaleTrackBar
             // 
-            this.ScaleTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScaleTrackBar.AutoSize = false;
-            this.ScaleTrackBar.Location = new System.Drawing.Point(648, 434);
+            resources.ApplyResources(this.ScaleTrackBar, "ScaleTrackBar");
             this.ScaleTrackBar.Maximum = 100;
             this.ScaleTrackBar.Minimum = 1;
             this.ScaleTrackBar.Name = "ScaleTrackBar";
-            this.ScaleTrackBar.Size = new System.Drawing.Size(140, 25);
-            this.ScaleTrackBar.TabIndex = 9;
             this.ScaleTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.ScaleTrackBar.Value = 60;
             this.ScaleTrackBar.ValueChanged += new System.EventHandler(this.ScaleTrackBar_ValueChanged);
             // 
             // ScaleTrackBarLabel
             // 
-            this.ScaleTrackBarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScaleTrackBarLabel.AutoSize = true;
-            this.ScaleTrackBarLabel.Location = new System.Drawing.Point(657, 419);
+            resources.ApplyResources(this.ScaleTrackBarLabel, "ScaleTrackBarLabel");
             this.ScaleTrackBarLabel.Name = "ScaleTrackBarLabel";
-            this.ScaleTrackBarLabel.Size = new System.Drawing.Size(83, 12);
-            this.ScaleTrackBarLabel.TabIndex = 10;
-            this.ScaleTrackBarLabel.Text = "缩放比例：60%";
             // 
             // ColumnTrackBarLabel
             // 
-            this.ColumnTrackBarLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ColumnTrackBarLabel.AutoSize = true;
-            this.ColumnTrackBarLabel.Location = new System.Drawing.Point(511, 419);
+            resources.ApplyResources(this.ColumnTrackBarLabel, "ColumnTrackBarLabel");
             this.ColumnTrackBarLabel.Name = "ColumnTrackBarLabel";
-            this.ColumnTrackBarLabel.Size = new System.Drawing.Size(113, 12);
-            this.ColumnTrackBarLabel.TabIndex = 12;
-            this.ColumnTrackBarLabel.Text = "列数（0：自动）：0";
             // 
             // ColumnTrackBar
             // 
-            this.ColumnTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ColumnTrackBar.AutoSize = false;
-            this.ColumnTrackBar.Location = new System.Drawing.Point(502, 434);
+            resources.ApplyResources(this.ColumnTrackBar, "ColumnTrackBar");
             this.ColumnTrackBar.Maximum = 20;
             this.ColumnTrackBar.Name = "ColumnTrackBar";
-            this.ColumnTrackBar.Size = new System.Drawing.Size(140, 25);
-            this.ColumnTrackBar.TabIndex = 11;
             this.ColumnTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.ColumnTrackBar.ValueChanged += new System.EventHandler(this.ColumnTrackBar_ValueChanged);
             // 
             // PlaceAvgCheckBox
             // 
-            this.PlaceAvgCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PlaceAvgCheckBox.AutoSize = true;
+            resources.ApplyResources(this.PlaceAvgCheckBox, "PlaceAvgCheckBox");
             this.PlaceAvgCheckBox.Checked = true;
             this.PlaceAvgCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.PlaceAvgCheckBox.Location = new System.Drawing.Point(406, 434);
             this.PlaceAvgCheckBox.Name = "PlaceAvgCheckBox";
-            this.PlaceAvgCheckBox.Size = new System.Drawing.Size(72, 16);
-            this.PlaceAvgCheckBox.TabIndex = 13;
-            this.PlaceAvgCheckBox.Text = "均匀分布";
             this.PlaceAvgCheckBox.UseVisualStyleBackColor = true;
             // 
             // ConvertButton
             // 
-            this.ConvertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConvertButton.Location = new System.Drawing.Point(712, 379);
+            resources.ApplyResources(this.ConvertButton, "ConvertButton");
             this.ConvertButton.Name = "ConvertButton";
-            this.ConvertButton.Size = new System.Drawing.Size(75, 23);
-            this.ConvertButton.TabIndex = 14;
-            this.ConvertButton.Text = "转换";
             this.ConvertButton.UseVisualStyleBackColor = true;
             this.ConvertButton.Click += new System.EventHandler(this.ConvertButton_Click);
+            // 
+            // JpgFormatCheckBox
+            // 
+            resources.ApplyResources(this.JpgFormatCheckBox, "JpgFormatCheckBox");
+            this.JpgFormatCheckBox.Name = "JpgFormatCheckBox";
+            this.JpgFormatCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // OptInfo
+            // 
+            resources.ApplyResources(this.OptInfo, "OptInfo");
+            this.OptInfo.Name = "OptInfo";
             // 
             // App
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 500);
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.OptInfo);
+            this.Controls.Add(this.JpgFormatCheckBox);
             this.Controls.Add(this.ConvertButton);
             this.Controls.Add(this.PlaceAvgCheckBox);
             this.Controls.Add(this.ColumnTrackBarLabel);
@@ -192,10 +154,8 @@
             this.Controls.Add(this.SelectGifButton);
             this.Controls.Add(this.GifInfo);
             this.Controls.Add(this.GifFrames);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "App";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Gif转换 1.0";
+            this.Load += new System.EventHandler(this.App_Load);
             this.SizeChanged += new System.EventHandler(this.App_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.ScaleTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColumnTrackBar)).EndInit();
@@ -217,6 +177,8 @@
         private System.Windows.Forms.TrackBar ColumnTrackBar;
         private System.Windows.Forms.CheckBox PlaceAvgCheckBox;
         private System.Windows.Forms.Button ConvertButton;
+        private System.Windows.Forms.CheckBox JpgFormatCheckBox;
+        private System.Windows.Forms.Label OptInfo;
     }
 }
 
