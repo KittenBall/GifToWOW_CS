@@ -12,7 +12,7 @@ namespace GifToWOW
 {
     public partial class App : Form, GifConverter.IGifConverterListener
     {
-        private static readonly string VERSION = " 1.0";
+        private static readonly string VERSION = " 1.2";
         private string gifPath;
         private string optDirPath;
         private GifConverter gifConverter;
@@ -24,7 +24,7 @@ namespace GifToWOW
             gifConverter = new GifConverter(this);
             InitializeComponent();
             App_SizeChanged(null, null);
-            this.Text = this.Text + VERSION;
+            this.Text += VERSION;
             OptDirPathLabel.Text = desktopPath;
             pictureBoxes = new List<PictureBox>();
         }

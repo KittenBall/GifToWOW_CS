@@ -5,7 +5,6 @@ A simple winform project, Allows you to merge all frames within a gif into one i
 - Custom zoom
 
 ### Preview
-*English supported*
 - Original gif:
 
 ![Original gif](preview/test.gif)
