@@ -12,7 +12,7 @@ namespace GifToWOW
 {
     public partial class App : Form, GifConverter.IGifConverterListener
     {
-        private static readonly string VERSION = " 1.2";
+        private static readonly string VERSION = " 1.3";
         private string gifPath;
         private string optDirPath;
         private GifConverter gifConverter;
