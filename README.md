@@ -1,27 +1,3 @@
-A simple winform project, Allows you to merge all frames within a gif into one image which is tga format so you can use it in wow to show a animated image.
+一个简单的将Gif转为魔兽能使用的素材的命令行工具
 
-### Support
-- Custom column count
-- Custom zoom
-
-### Preview
-- Original gif:
-
-![Original gif](preview/test.gif)
-
-- Open this tool:
-
-![Open this tool](preview/preview.png)
-
-- Select a gif:
-
-![Select a gif](preview/preview_selectgif.png)
-
-- Click Convert(转换) button
-
-![Convert](preview/preview_selectgif.png)
-
-
-### Note
-- It is best to set the number of columns to 0, so that the number of columns of the generated image is automatically calculated, and theoretically the file size is the smallest.
-- Larger Gifs will have memory issues because I display all frames loading them all into memory
+A simple console application which allows you to merge all frames within a gif into one image so you can use it in wow to show a animated image. Only support Chinese,  because I don't think any other people will use it.  If you need, file an issue.
