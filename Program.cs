@@ -126,7 +126,7 @@ namespace GifToWOWConsole
                         }
 
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.WriteLine("正在写入第" + j + "帧");
+                        Console.WriteLine("正在写入第" + (j + 1) + "帧");
 
                         gif.image.SelectActiveFrame(FrameDimension.Time, j);
                         PropertyItem item = gif.image.GetPropertyItem(0x5100);
@@ -180,9 +180,11 @@ namespace GifToWOWConsole
 
             string outputPath = gif.inputPath.Replace(".gif", ".png");
 
-            Console.WriteLine("转换成功，正在保存文件，Gif总时长：" + duration / (float)1000 + "秒");
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.WriteLine("转换成功，正在保存文件");
             result.Save(outputPath, ImageFormat.Png);
             Console.WriteLine("文件保存成功，保存地址：" + outputPath);
+            Console.WriteLine("Gif总时长：" + duration / (float)1000 + "秒");
             Console.WriteLine();
 
             result.Dispose();
