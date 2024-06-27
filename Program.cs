@@ -15,24 +15,33 @@ namespace GifToWOWConsole
                 float scale = GetScale();
 
                 OutputImageInfo outputInfo = gif.GetOutputImageInfo(scale);
-                Console.WriteLine("输出图片信息：");
-                Console.WriteLine("图片宽高：" + outputInfo.width + "*" + outputInfo.height);
-                Console.WriteLine("图片帧宽高：" + outputInfo.imageWidth + "*" + outputInfo.imageHeight);
-                Console.WriteLine(outputInfo.col + "列，列宽：" + outputInfo.GetColumnWidth());
-                Console.WriteLine(outputInfo.row + "行，行高：" + outputInfo.GetRowHeight());
-                Console.WriteLine();
-                Console.WriteLine("确认转换？ Y/N/Q");
-
-                switch (Console.ReadLine().ToLower())
+                
+                if (outputInfo.width <= 0 || outputInfo.height <= 0)
                 {
-                    case "y":
-                        ConvertGif(gif, outputInfo);
-                        break;
-                    case "n":
-                        break;
-                    case "q":
-                        Environment.Exit(0);
-                        break;
+                    Console.WriteLine("生成的图片宽或高大于8192，请考虑调整帧数或缩放系数");
+
+                }
+                else
+                {
+                    Console.WriteLine("输出图片信息：");
+                    Console.WriteLine("图片宽高：" + outputInfo.width + "*" + outputInfo.height);
+                    Console.WriteLine("图片帧宽高：" + outputInfo.imageWidth + "*" + outputInfo.imageHeight);
+                    Console.WriteLine(outputInfo.col + "列");
+                    Console.WriteLine(outputInfo.row + "行");
+                    Console.WriteLine();
+                    Console.WriteLine("确认转换？ Y/N/Q");
+
+                    switch (Console.ReadLine().ToLower())
+                    {
+                        case "y":
+                            ConvertGif(gif, outputInfo);
+                            break;
+                        case "n":
+                            break;
+                        case "q":
+                            Environment.Exit(0);
+                            break;
+                    }
                 }
                
                 gif.image.Dispose();
@@ -141,8 +150,8 @@ namespace GifToWOWConsole
                         }
 
                         float left, top;
-                        left = (j % optImgInfo.col) * optImgInfo.cellWidth + (optImgInfo.cellWidth - optImgInfo.imageWidth) / 2;
-                        top = i * optImgInfo.cellHeight + (optImgInfo.cellHeight - optImgInfo.imageHeight) / 2;
+                        left = (j % optImgInfo.col) * optImgInfo.imageWidth;
+                        top = i * optImgInfo.imageHeight;
 
                         if (optImgInfo.imageWidth != gif.image.Width || optImgInfo.imageHeight != gif.image.Height)
                         {
@@ -215,30 +224,35 @@ namespace GifToWOWConsole
                     imageHeight = scaleHeight
                 };
 
-                int cols = Math.Min(frameCount, (int)Math.Ceiling(frameCount / 2d));
+                int neededSize = scaleWidth * scaleHeight * frameCount;
+                int maxSize = 8192;
+                int neededWidth = (int)Math.Pow(2, Math.Ceiling(Math.Log(scaleWidth) / Math.Log(2)));
+                int emptyPixels = int.MaxValue;
                 float delta = float.MaxValue;
-                for (int i = cols; i > 0; i--)
+                
+                while(neededWidth <= maxSize)
                 {
-                    int col = i;
-                    int row = (int)Math.Ceiling(frameCount / (double)col);
-                    int realWidth = scaleWidth * col;
-                    int realHeight = scaleHeight * row;
-                    int neededWidth = (int)Math.Pow(2, Math.Ceiling(Math.Log(realWidth) / Math.Log(2)));
-                    int neededHeight = (int)Math.Pow(2, Math.Ceiling(Math.Log(realHeight) / Math.Log(2)));
-                    
-                    float cellWidth = neededWidth / (float)col;
-                    float cellHeight = (float)(neededHeight / Math.Floor(neededHeight / (float)scaleHeight));
+                    int cols = neededWidth / scaleWidth;
+                    int rows = (int)Math.Ceiling(frameCount / (double)cols);
+                    int neededHeight = (int)Math.Pow(2, Math.Ceiling(Math.Log(rows * scaleHeight) / Math.Log(2)));
+                    //尽可能提高空间利用率
+                    int unusedPixels = neededWidth * neededHeight - neededSize;
+                    //尽可能趋近于正方形
+                    float d = Math.Abs(neededWidth/neededHeight - 1);
 
-                    if (Math.Abs(col / (float)row - cellHeight / cellWidth) < delta) {
-                        delta = col / (float)row;
-                        optImgInfo.col = col;
-                        optImgInfo.row = row;
+                    if (neededHeight <= maxSize && unusedPixels >= 0 && (optImgInfo.width <= 0 || optImgInfo.height <= 0 || unusedPixels < emptyPixels || d < delta))
+                    {
+                        emptyPixels = unusedPixels;
+                        delta = d;
+
+                        optImgInfo.col = cols;
+                        optImgInfo.row = rows;
                         optImgInfo.width = neededWidth;
                         optImgInfo.height = neededHeight;
-                        optImgInfo.cellWidth = cellWidth;
-                        optImgInfo.cellHeight = cellHeight;
                     }
-                }
+
+                    neededWidth = neededWidth * 2;
+                };
 
                 return optImgInfo;
             } 
@@ -251,19 +265,12 @@ namespace GifToWOWConsole
             public int height;
             public int col;
             public int row;
-            public float cellWidth;
-            public float cellHeight;
             public float imageWidth;
             public float imageHeight;
 
-            public float GetColumnWidth()
+            public int GetPixels()
             {
-                return cellWidth;
-            }
-
-            public float GetRowHeight()
-            {
-                return cellHeight;
+                return width * height;
             }
     }
 }
