@@ -51,7 +51,7 @@ namespace GifToWOWConsole
         private static InputImage GetGif()
         {
             Console.WriteLine("请输入Gif文件地址（将文件拖入框体即可）");
-            String gifPath = Console.ReadLine();
+            String gifPath = Console.ReadLine().ToLower();
 
             System.Drawing.Image gif = null;
             try
